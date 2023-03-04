@@ -12,10 +12,17 @@ namespace Filmes.Data
 
 		protected override void OnModelCreating(ModelBuilder builder)
 		{
+			//Relacao 1:1
 			builder.Entity<Endereco>()
 				.HasOne(endereco => endereco.Cinema)
 				.WithOne(cinema => cinema.Endereco)
 				.HasForeignKey<Cinema>(cinema => cinema.IdEndereco);
+
+			//Relacao 1:n
+			builder.Entity<Cinema>()
+				.HasOne(cinema => cinema.Gerente)
+				.WithMany(gerente => gerente.Cinemas)
+				.HasForeignKey(cinema => cinema.IdGerente);
 		}
 
 		public DbSet<Filme> Filmes { get; set; }

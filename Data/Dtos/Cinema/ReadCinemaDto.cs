@@ -10,5 +10,6 @@ namespace Filmes.Data.Dtos.Cinema
         [Required(ErrorMessage = "O campo nome é obrigatório")]
         public string Nome { get; set; }
         public Filmes.Models.Endereco Endereco { get; set; }
+        public Filmes.Models.Gerente Gerente { get; set; }
     }
 }

@@ -14,6 +14,8 @@ namespace Filmes.Models
 		public string Nome { get; set; }
 		public virtual Endereco Endereco { get; set; }
 		public virtual Gerente Gerente { get; set; }
+		//Relacionamento n:n com filmes
+		public virtual List<Filme> Filmes { get; set; }
 
 	}
 }

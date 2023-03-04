@@ -44,5 +44,37 @@ namespace Filmes.Controllers
 			return NotFound();
 		}
 
+		[HttpPut("AtualizaFilme/{id}")]
+		public IActionResult AtualizaFilme(int id, [FromBody] Filme novoFilme)
+		{
+			var filme = _context.Filmes.FirstOrDefault(x => x.Id == id);
+
+			if (filme == null)
+				return NotFound();
+
+			filme.Titulo = novoFilme.Titulo;
+			filme.Genero = novoFilme.Genero;
+			filme.Diretor = novoFilme.Diretor;
+			filme.Duracao = novoFilme.Duracao;
+
+			_context.SaveChanges();
+
+			return NoContent();
+		}
+
+		[HttpDelete("DeletaFilme/{id}")]
+		public IActionResult DeletaFilme(int id)
+		{
+			var filme = _context.Filmes.FirstOrDefault(x => x.Id == id);
+
+			if (filme == null)
+				return NotFound();
+
+			_context.Remove(filme);
+			_context.SaveChanges();
+
+			return NoContent();
+		}
+
 	}
 }

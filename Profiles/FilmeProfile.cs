@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using Filmes.Data.Dtos;
+using Filmes.Data.Dtos.Endereco;
+using Filmes.Data.Dtos.Filme;
 using Filmes.Models;
 
 namespace Filmes.Profiles

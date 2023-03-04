@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Filmes.Data;
-using Filmes.Data.Dtos;
+using Filmes.Data.Dtos.Filme;
 using Filmes.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.NetworkInformation;

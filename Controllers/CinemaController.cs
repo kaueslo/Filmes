@@ -46,7 +46,7 @@ namespace Filmes.Controllers
 
 			if (cinema != null) 
 			{
-				var filmeDto = _mapper.Map<ReadCinemaDto>(cinema);
+				var cinemaDto = _mapper.Map<ReadCinemaDto>(cinema);
 
 				return Ok(cinema);
 			}

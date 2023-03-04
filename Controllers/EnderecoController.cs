@@ -47,7 +47,7 @@ namespace Filmes.Controllers
 
 			if (endereco != null) 
 			{
-				var filmeDto = _mapper.Map<ReadFilmeDto>(endereco);
+				var enderecoDto = _mapper.Map<ReadEnderecoDto>(endereco);
 
 				return Ok(endereco);
 			}

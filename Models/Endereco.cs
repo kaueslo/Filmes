@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Filmes.Models
 {
@@ -15,6 +16,7 @@ namespace Filmes.Models
 		public string Bairro { get; set; }
 		[Required(ErrorMessage = "É necessário informar o Numero")]
 		public int Numero { get; set; }
-		public Cinema Cinema { get; set; }
+		[JsonIgnore]
+		public virtual Cinema Cinema { get; set; }
 	}
 }

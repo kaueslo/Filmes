@@ -9,7 +9,10 @@ namespace Filmes.Profiles
 		public GerenteProfile()
 		{
 			CreateMap<CreateGerenteDto, Gerente>();
-			CreateMap<Gerente, ReadGerenteDto>();
+			//Resolvendo o [JsonIgnore] nas classes
+			CreateMap<Gerente, ReadGerenteDto>()
+				.ForMember(x => x.Cinemas, opts => opts.MapFrom(gerente => gerente.Cinemas
+				.Select(c => new { c.Id, c.Nome, c.Endereco, c.IdEndereco })));
 		}
 	}
 }

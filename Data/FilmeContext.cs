@@ -18,11 +18,12 @@ namespace Filmes.Data
 				.WithOne(cinema => cinema.Endereco)
 				.HasForeignKey<Cinema>(cinema => cinema.IdEndereco);
 
-			//Relacao 1:n
+			//Relacao 1:n / DeleteBehavior tira o delete em cascada, ou seja, não deleta o Cinema quando deleta o gerente
 			builder.Entity<Cinema>()
 				.HasOne(cinema => cinema.Gerente)
 				.WithMany(gerente => gerente.Cinemas)
-				.HasForeignKey(cinema => cinema.IdGerente);
+				.HasForeignKey(cinema => cinema.IdGerente)
+				.OnDelete(DeleteBehavior.Restrict);
 		}
 
 		public DbSet<Filme> Filmes { get; set; }

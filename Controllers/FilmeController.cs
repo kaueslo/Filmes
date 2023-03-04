@@ -21,15 +21,20 @@ namespace Filmes.Controllers
 		}
 
 		[HttpGet("RecuperaFilme")]
-		public IEnumerable<Filme> RecuperaFilme() 
+		public IActionResult RecuperaFilme() 
 		{
-			return filmes;
+			return Ok(filmes);
 		}
 
 		[HttpGet("RecuperaFilmePorId/{id}")]
-		public Filme RecuperaFilmePorId(int id)
+		public IActionResult RecuperaFilmePorId(int id)
 		{
-			return filmes.FirstOrDefault(x => x.Id == id);
+			var filme = filmes.FirstOrDefault(x => x.Id == id);
+
+			if (filme != null)
+				return Ok(filme);
+
+			return NotFound();
 		}
 
 	}

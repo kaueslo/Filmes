@@ -9,7 +9,9 @@ namespace Filmes.Profiles
 		public SessaoProfile()
 		{
 			CreateMap<CreateSessaoDto, Sessao>();
-			CreateMap<Sessao, CreateSessaoDto>();
+			CreateMap<Sessao, ReadSessaoDto>()
+				.ForMember(x => x.HorarioDeInicio, opts => 
+				opts.MapFrom(x => x.HorarioDeEncerramento.AddMinutes(x.Filme.Duracao*(-1))));
 		}
 	}
 }

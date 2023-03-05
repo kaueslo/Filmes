@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Filmes.Models
 {
@@ -15,6 +16,7 @@ namespace Filmes.Models
 		public virtual Endereco Endereco { get; set; }
 		public virtual Gerente Gerente { get; set; }
 		//Relacionamento n:n com sessoes
+		[JsonIgnore]
 		public virtual List<Sessao> Sessoes { get; set; }
 
 	}

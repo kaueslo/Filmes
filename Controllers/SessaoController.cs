@@ -3,6 +3,7 @@ using Filmes.Data;
 using Filmes.Data.Dtos.Gerente;
 using Filmes.Data.Dtos.Sessoes;
 using Filmes.Models;
+using Filmes.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Filmes.Controllers
@@ -11,37 +12,27 @@ namespace Filmes.Controllers
 	[Route("[controller]")]
 	public class SessaoController : ControllerBase
 	{
-		private AppDbContext _context;
-		private IMapper _mapper;
+		private SessaoService _sessaoService;
 
-		public SessaoController(AppDbContext context, IMapper mapper)
+		public SessaoController(SessaoService sessaoService)
 		{
-			_context = context;
-			_mapper = mapper;
+			_sessaoService = sessaoService;
 		}
 
 		[HttpPost("AdicionaSessao")]
 		public IActionResult AdicionaSessao(CreateSessaoDto dto)
 		{
-			var sessao = _mapper.Map<Sessao>(dto);
+			var readDto = _sessaoService.AdicionaSessao(dto);
 
-			_context.Sessoes.Add(sessao);
-			_context.SaveChanges();
-
-			return CreatedAtAction(nameof(RecuperaSessoesPorId), new { Id = sessao.Id }, sessao);
+			return CreatedAtAction(nameof(RecuperaSessoesPorId), new { Id = readDto.Id }, readDto);
 		}
 
 		[HttpGet("RecuperaSessoesPorId/{id}")]
 		public IActionResult RecuperaSessoesPorId(int id)
 		{
-			var sessao = _context.Sessoes.FirstOrDefault(x => x.Id == id);
+			var readDto = _sessaoService.RecuperaSessaoPorId(id);
 
-			if (sessao != null)
-			{
-				var sessaoDto = _mapper.Map<ReadSessaoDto>(sessao);
-
-				return Ok(sessaoDto);
-			}
+			if (readDto != null) return Ok(readDto);
 
 			return NotFound();
 		}

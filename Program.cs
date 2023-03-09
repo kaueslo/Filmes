@@ -1,4 +1,5 @@
 using Filmes.Data;
+using Filmes.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(x => x.UseLazyLoadingProxies().UseMySQL(builder.Configuration.GetConnectionString("FilmeConnection")));
+builder.Services.AddScoped<FilmeService, FilmeService>();
+builder.Services.AddScoped<GerenteService, GerenteService>();
+builder.Services.AddScoped<CinemaService, CinemaService>();
+builder.Services.AddScoped<SessaoService, SessaoService>();
+builder.Services.AddScoped<EnderecoService, EnderecoService>();
+
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();

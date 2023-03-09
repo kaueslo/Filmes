@@ -11,10 +11,10 @@ namespace Filmes.Controllers
 	[Route("[controller]")]
 	public class GerenteController : ControllerBase
 	{
-		private FilmeContext _context;
+		private AppDbContext _context;
 		private IMapper _mapper;
 
-		public GerenteController(FilmeContext context, IMapper mapper)
+		public GerenteController(AppDbContext context, IMapper mapper)
 		{
 			_context = context;
 			_mapper = mapper;

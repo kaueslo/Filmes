@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Filmes.Migrations
 {
-    [DbContext(typeof(FilmeContext))]
+    [DbContext(typeof(AppDbContext))]
     [Migration("20230304195858_Adicionando relacao entre gerente e cinema")]
     partial class Adicionandorelacaoentregerenteecinema
     {

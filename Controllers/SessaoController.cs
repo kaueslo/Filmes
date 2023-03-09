@@ -11,10 +11,10 @@ namespace Filmes.Controllers
 	[Route("[controller]")]
 	public class SessaoController : ControllerBase
 	{
-		private FilmeContext _context;
+		private AppDbContext _context;
 		private IMapper _mapper;
 
-		public SessaoController(FilmeContext context, IMapper mapper)
+		public SessaoController(AppDbContext context, IMapper mapper)
 		{
 			_context = context;
 			_mapper = mapper;

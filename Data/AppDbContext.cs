@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Filmes.Data
 {
-	public class FilmeContext : DbContext
+	public class AppDbContext : DbContext
 	{
-		public FilmeContext(DbContextOptions<FilmeContext> opt) : base(opt)
+		public AppDbContext(DbContextOptions<AppDbContext> opt) : base(opt)
 		{
 
 		}

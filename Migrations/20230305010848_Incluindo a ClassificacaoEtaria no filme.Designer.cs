@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Filmes.Migrations
 {
-    [DbContext(typeof(FilmeContext))]
+    [DbContext(typeof(AppDbContext))]
     [Migration("20230305010848_Incluindo a ClassificacaoEtaria no filme")]
     partial class IncluindoaClassificacaoEtarianofilme
     {
